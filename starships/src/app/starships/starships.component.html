@@ -1,0 +1,23 @@
+//how to list the data from the swapi api in angular?
+<div *ngIf="data$ | async as data">
+  <div class="boxes">
+    <div class="box" *ngFor="let person of data.results">
+      <p>
+        <strong>name: </strong>
+        <br />
+        {{ person.name }}
+      </p>
+      <p><strong>Starships:</strong></p>
+      <ul>
+        <li *ngFor="let ship of person.starships">{{ ship.name }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="buttons">
+    <button name="previous" (click)="pagination(data.previous)">
+      previous
+    </button>
+    <button name="next" (click)="pagination(data.next)">next</button>
+  </div>
+</div>
+
